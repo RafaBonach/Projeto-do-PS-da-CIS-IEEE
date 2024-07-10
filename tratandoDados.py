@@ -36,7 +36,21 @@ data_pre_fill.dropna(inplace=True)
 # --------------------- Questão 3, relação entre educacao e substancias -------------------------
 data = pd.read_csv('./Drugs_preprocessado.csv')
 data_cp = data.copy()
-consumo = [f'CL{i}' for i in range(0, 6)]
+consumo = ['Alcohol', 'Amphet', 'Amyl', 'Benzos', 'Caff', 'Cannabis', 'Choc', 'Coke', 'Crack', 'Ecstasy','Heroin', 'Ketamine', 'Legalh', 'LSD', 'Meth', 'Mushrooms', 'Nicotine']
+cl = []
+nrows, ncols = data_cp.shape
+for k in range(7):
+    for i in range(nrows):
+        cl.append(0)
+        for j in consumo:
+            if data_cp.loc(i, consumo) == [f'CL{k}']:
+                cl[i] += 1
+    
+
+
+print(data_cp["CL0"])
+
+#print(data_cp['CL6'])
 
 
 #education_group = data_pre_fill.groupby('Education')
